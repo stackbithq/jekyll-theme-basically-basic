@@ -8,8 +8,8 @@
   {%- assign search_provider = site.search_provider | default: "lunr" -%}
   {%- case search_provider -%}
     {%- when "lunr" -%}
-      {% include search/lunr-search-scripts.html %}
+      {% include lunr-search-scripts.html %}
     {%- when "algolia" -%}
-      {% include search/algolia-search-scripts.html %}
+      {% include algolia-search-scripts.html %}
   {%- endcase -%}
 {% endif %}
