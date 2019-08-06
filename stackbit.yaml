@@ -594,6 +594,7 @@ models:
     label: Curriculum Vitæ Page
     description: Curriculum vitæ page
     match: "**/*cv.md"
+    exclude: "{example/**/*,docs/**/*}"
     template: cv
     fields:
       - type: string
@@ -652,6 +653,7 @@ models:
     label: About Page
     description: The about page
     match: "**/*about.md"
+    exclude: "{example/**/*,docs/**/*}"
     template: about
     fields:
       - type: string
@@ -663,7 +665,8 @@ models:
     label: Categories Page
     description: The categories page
     singleInstance: true
-    file: "{categories.md,example/categories.md,docs/categories.md}"
+    file: "categories.md"
+    exclude: "{example/**/*,docs/**/*}"
     template: categories
     fields:
       - type: string
@@ -680,6 +683,7 @@ models:
     description: The home page
     singleInstance: true
     file: "index.html"
+    exclude: "{example/**/*,docs/**/*}"
     template: home
     fields:
       - type: boolean
@@ -755,6 +759,7 @@ models:
     label: Page
     description: Generic page layout
     match: "**/*404.md"
+    exclude: "{example/**/*,docs/**/*}"
     template: page
     fields:
       - type: string
@@ -768,7 +773,8 @@ models:
   post:
     type: page
     label: Post
-    folder: "{_posts,example/_posts,docs/_posts}"
+    folder: "_posts"
+    exclude: "{example/**/*,docs/**/*}"
     template: post
     fields:
       - type: string
@@ -813,7 +819,8 @@ models:
     label: Posts
     description: The posts page
     singleInstance: true
-    file: "{posts.md,example/posts.md,docs/posts.md}"
+    file: "posts.md"
+    exclude: "{example/**/*,docs/**/*}"
     template: posts
     fields:
       - type: string
@@ -833,7 +840,8 @@ models:
     label: Tags
     description: The tags archive
     singleInstance: true
-    file: "{tags.md,example/tags.md,docs/tags.md}"
+    file: "tags.md"
+    exclude: "{example/**/*,docs/**/*}"
     template: tags
     fields:
       - type: string
@@ -850,7 +858,7 @@ models:
     description: An individual tag page
     template: tag
     match: "**/**/_tags/**"
-    exclude: "{_posts/**,_recipes/**,example/_posts/**,example/_recipes/**,docs/_posts/**,docs/_recipes/**}"
+    exclude: "{_posts/**,_recipes/**,example/**/*,docs/**/*}"
     fields:
       - type: string
         name: title
@@ -869,6 +877,7 @@ models:
     description: A collection of pages
     template: collection
     match: "**/**/_collections/**"
+    exclude: "{example/**/*,docs/**/*}"
     fields:
       - type: string
         name: title
@@ -894,7 +903,7 @@ models:
     description: A category Page
     template: category
     match: "**/**/_categories/**"
-    exclude: "{_posts/**,_recipes/**,example/_posts/**,example/_recipes/**,docs/_posts/**,docs/_recipes/**,**/*404.md,**/*cv.md,**/*recipes.md,**/*about.md}"
+    exclude: "{_posts/**,_recipes/**,example/**/*,docs/**/*,**/*404.md,**/*cv.md,**/*recipes.md,**/*about.md}"
     fields:
       - type: string
         name: title
