@@ -666,7 +666,6 @@ models:
     description: The categories page
     singleInstance: true
     file: "categories.md"
-    exclude: "{example/**/*,docs/**/*}"
     template: categories
     fields:
       - type: string
@@ -683,7 +682,6 @@ models:
     description: The home page
     singleInstance: true
     file: "index.html"
-    exclude: "{example/**/*,docs/**/*}"
     template: home
     fields:
       - type: boolean
@@ -820,7 +818,6 @@ models:
     description: The posts page
     singleInstance: true
     file: "posts.md"
-    exclude: "{example/**/*,docs/**/*}"
     template: posts
     fields:
       - type: string
@@ -841,7 +838,6 @@ models:
     description: The tags archive
     singleInstance: true
     file: "tags.md"
-    exclude: "{example/**/*,docs/**/*}"
     template: tags
     fields:
       - type: string
@@ -921,7 +917,8 @@ models:
     label: Recipe
     description: A recipie page
     template: post
-    folder: "{_recipes,example/_recipes,docs/_recipes}"
+    folder: "_recipes"
+    exclude: "{example/**/*,docs/**/*}"
     fields:
       - type: string
         name: title
@@ -948,12 +945,4 @@ models:
     label: Misc
     description: Misc files
     template: page
-    folder: "{.github}"
-    file: "{.github/**/*,.github/*}"
-    fields:
-      - type: string
-        name: name
-        label: Name
-      - type: string
-        name: about
-        label: about
+    match: ".github/**/*"
