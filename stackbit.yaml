@@ -12,6 +12,10 @@ metadata:
   description: "A substitute for the default Minima, with a few enhancements thrown in for good measure."
   author: Michael Rose and contributors
   authorURL: "https://github.com/mmistakes/jekyll-theme-basically-basic"
+excludePages:
+  - example/**/*
+  - docs/**/*
+  - .github
 models:
   config:
     type: config
@@ -593,8 +597,8 @@ models:
     type: page
     label: Curriculum Vitæ Page
     description: Curriculum vitæ page
-    match: "*/*cv.md"
-    exclude: "{example/**/*,docs/**/*}"
+    singleInstance: true
+    file: "cv.md"
     template: cv
     fields:
       - type: string
@@ -652,8 +656,8 @@ models:
     type: page
     label: About Page
     description: The about page
-    match: "*/*about.md"
-    exclude: "{example/**/*,docs/**/*}"
+    singleInstance: true
+    file: "about.md"
     template: about
     fields:
       - type: string
@@ -664,8 +668,8 @@ models:
     type: page
     label: Categories Page
     description: The categories page
-    match: "*/*categories.md"
-    exclude: "{example/**/*,docs/**/*}"
+    singleInstance: true
+    file: "categories.md"
     template: categories
     fields:
       - type: string
@@ -680,8 +684,8 @@ models:
     type: page
     label: Home Page
     description: The home page
-    match: "*/*index.html"
-    exclude: "{example/**/*,docs/**/*}"
+    singleInstance: true
+    file: "index.html"
     template: home
     fields:
       - type: boolean
@@ -756,8 +760,8 @@ models:
     type: page
     label: Page
     description: Generic page layout
-    match: "*/*404.md"
-    exclude: "{example/**/*,docs/**/*}"
+    singleInstance: true
+    file: "404.md"
     template: page
     fields:
       - type: string
@@ -771,8 +775,7 @@ models:
   post:
     type: page
     label: Post
-    match: "{_posts/**/*,example/_posts/**/*,docs/_posts/**/*}"
-    exclude: "{example/**/*,docs/**/*}"
+    folder: "_posts"
     template: post
     fields:
       - type: string
@@ -816,8 +819,8 @@ models:
     type: page
     label: Posts
     description: The posts page
-    match: "*/*posts.md"
-    exclude: "{example/**/*,docs/**/*}"
+    singleInstance: true
+    file: "posts.md"
     template: posts
     fields:
       - type: string
@@ -836,8 +839,8 @@ models:
     type: page
     label: Tags
     description: The tags archive
-    match: "*/*tags.md"
-    exclude: "{example/**/*,docs/**/*}"
+    singleInstance: true
+    file: "tags.md"
     template: tags
     fields:
       - type: string
@@ -853,8 +856,7 @@ models:
     label: Tag
     description: An individual tag page
     template: tag
-    match: "{_tags/**/*,example/_tags/**/*,docs/_tags/**/*}"
-    exclude: "{example/**/*,docs/**/*}"
+    folder: "_tags"
     fields:
       - type: string
         name: title
@@ -872,8 +874,7 @@ models:
     label: Collection
     description: A collection of pages
     template: collection
-    match: "{_collections/**/*,example/_collections/**/*,docs/_collections/**/*}"
-    exclude: "{example/**/*,docs/**/*}"
+    folder: "_collections"
     fields:
       - type: string
         name: title
@@ -898,7 +899,7 @@ models:
     label: Category
     description: A category Page
     template: category
-    match: "{_categories/**/*,example/_categories/**/*,docs/_categories/**/*}"
+    folder: "_categories"
     fields:
       - type: string
         name: title
@@ -916,8 +917,7 @@ models:
     label: Recipe
     description: A recipie page
     template: post
-    match: "{_recipes/**/*,example/_recipes/**/*,docs/_recipes/**/*}"
-    exclude: "{example/**/*,docs/**/*}"
+    match: "_recipes"
     fields:
       - type: string
         name: title
@@ -939,9 +939,3 @@ models:
             name: caption
             label: Image Caption
             description: The caption used for the recipe image
-  misc:
-    type: page
-    label: Misc
-    description: Misc files
-    template: page
-    match: ".github/**/*"
