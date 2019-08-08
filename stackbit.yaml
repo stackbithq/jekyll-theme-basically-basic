@@ -22,9 +22,6 @@ models:
     label: Config
     fields:
       - type: string
-        name: lang
-        label: Language
-      - type: string
         name: title
         label: Site Title
         required: true
@@ -37,12 +34,9 @@ models:
       - type: string
         name: baseurl
         label: Baseurl
+        hidden: true
         default: "/"
         description: "The subpath of your site, e.g. /blog"
-      - type: string
-        name: url
-        label: URL
-        description: "The base hostname & protocol for your site, e.g. http://example.com"
       - type: object
         name: author
         label: Author
@@ -71,64 +65,6 @@ models:
         label: Enable Search
         description: Places a site search next  to the site menu
         default: true
-      - type: boolean
-        name: search_full_content
-        label: Search Full Content
-        default: true
-      - type: string
-        name: search_provider
-        label: Search Provider
-        default: algolia
-        description: The service providing the site search
-      - type: object
-        name: algolia
-        label: Algolia
-        fields:
-          - type: string
-            name: application_id
-            label: Application ID
-            default: "QB6HVGBSBA"
-          - type: string
-            name: index_name
-            label: Index Name
-            default: "basically-basic"
-          - type: string
-            name: search_only_api_key
-            label: Search Only API Key
-            default: "9d5014e5bbc77372547bce778dfa5663"
-          - type: boolean
-            name: powered_by
-            label: Powered By
-            default: true
-      - type: object
-        name: liquid
-        label: Liquid
-        fields:
-          - type: string
-            name: error_mode
-            label: Error Mode
-            default: "strict"
-      - type: string
-        name: markdown
-        label: Markdown Type
-        default: kramdown
-      - type: string
-        name: theme
-        label: Theme Name
-        default: "jekyll-theme-basically-basic"
-      - type: list
-        name: plugins
-        label: Plugins
-        items:
-          type: string
-      - type: object
-        name: feed
-        label: Feed
-        fields:
-          - type: string
-            name: path
-            label: Path
-            default: "atom.xml"
       - type: number
         name: paginate
         label: Paginate
