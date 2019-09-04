@@ -1,19 +1,18 @@
 stackbitVersion: ~0.2.34
 ssgName: jekyll
-staticDir: ""
-uploadDir: images
-buildCommand: "cp -rf example/* ./ && gem install jekyll bundler && bundle install && bundle exec jekyll build"
-publishDir: "_site"
-dataDir: "_data"
-pagesDir: ""
-pageTemplateKey: layout
+staticDir: "example"
+uploadDir: assets/images
+buildCommand: "cd example && gem install bundler && bundle install && bundle exec jekyll build"
+publishDir: "example/_site"
+dataDir: "example/_data"
+pagesDir: "example"
+pageLayoutKey: layout
 metadata:
   title: Basically Basic
   description: "A substitute for the default Minima, with a few enhancements thrown in for good measure."
   author: Michael Rose and contributors
   authorURL: "https://github.com/mmistakes/jekyll-theme-basically-basic"
 excludePages:
-  - example/**/*
   - docs/**/*
   - .github
 models:
@@ -48,7 +47,7 @@ models:
           - type: string
             name: twitter
             label: Twitter Handle
-          - type: image
+          - type: string
             name: picture
             label: Author Picture
       - type: string
@@ -65,6 +64,32 @@ models:
         label: Enable Search
         description: Places a site search next  to the site menu
         default: true
+      - type: boolean
+        name: search_full_content
+        label: Search Full Content
+        default: true
+      - type: string
+        name: search_provider
+        label: Search Provider
+        default: algolia
+      - type: object
+        name: algolia
+        label: Algolia
+        description: Use your algolia Information
+        fields: 
+          - type: string
+            name: application_id
+            label: Application Id
+          - type: string
+            name: index_name
+            label: Index name
+          - type: string
+            name: search_only_api_key
+            label: Search Only API key
+          - type: boolean
+            name: powered_by
+            label: Powered By
+            default: true
       - type: number
         name: paginate
         label: Paginate
@@ -91,36 +116,6 @@ models:
               - type: string
                 name: permalink
                 label: Permalink
-      - type: list
-        name: defaults
-        label: Defaults
-        hidden: true
-        items:
-          type: object
-          fields:
-            - type: object
-              name: scope
-              label: Scope
-              fields:
-                - type: string
-                  name: path
-                  label: Path
-                  required: true
-                - type: string
-                  name: type
-                  label: Type
-                  required: true
-            - type: object
-              name: values
-              label: Values
-              fields:
-                - type: string
-                  name: layout
-                  label: Layout
-                - type: boolean
-                  name: read_time
-                  label: Read Time
-                  default: true
   cv:
     type: data
     label: Curriculum Vitæ data
@@ -535,7 +530,7 @@ models:
     description: Curriculum vitæ page
     singleInstance: true
     file: "cv.md"
-    template: cv
+    layout: cv
     fields:
       - type: string
         name: title
@@ -594,7 +589,7 @@ models:
     description: The about page
     singleInstance: true
     file: "about.md"
-    template: about
+    layout: about
     fields:
       - type: string
         name: title
@@ -606,7 +601,7 @@ models:
     description: The categories page
     singleInstance: true
     file: "categories.md"
-    template: categories
+    layout: categories
     fields:
       - type: string
         name: title
@@ -622,7 +617,7 @@ models:
     description: The home page
     singleInstance: true
     file: "index.html"
-    template: home
+    layout: home
     fields:
       - type: boolean
         name: paginate
@@ -698,7 +693,7 @@ models:
     description: Generic page layout
     singleInstance: true
     file: "404.md"
-    template: page
+    layout: page
     fields:
       - type: string
         name: title
@@ -712,7 +707,7 @@ models:
     type: page
     label: Post
     folder: "_posts"
-    template: post
+    layout: post
     fields:
       - type: string
         name: title
@@ -757,7 +752,7 @@ models:
     description: The posts page
     singleInstance: true
     file: "posts.md"
-    template: posts
+    layout: posts
     fields:
       - type: string
         name: title
@@ -777,7 +772,7 @@ models:
     description: The tags archive
     singleInstance: true
     file: "tags.md"
-    template: tags
+    layout: tags
     fields:
       - type: string
         name: title
@@ -791,7 +786,7 @@ models:
     type: page
     label: Tag
     description: An individual tag page
-    template: tag
+    layout: tag
     folder: "_tags"
     fields:
       - type: string
@@ -809,7 +804,7 @@ models:
     type: page
     label: Collection
     description: A collection of pages
-    template: collection
+    layout: collection
     folder: "_collections"
     fields:
       - type: string
@@ -834,7 +829,7 @@ models:
     type: page
     label: Category
     description: A category Page
-    template: category
+    layout: category
     folder: "_categories"
     fields:
       - type: string
@@ -852,8 +847,8 @@ models:
     type: page
     label: Recipe
     description: A recipie page
-    template: post
-    match: "_recipes"
+    layout: post
+    folder: "_recipes"
     fields:
       - type: string
         name: title
