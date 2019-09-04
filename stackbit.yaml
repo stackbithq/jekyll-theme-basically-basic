@@ -417,7 +417,7 @@ models:
         required: true
         default: default
       - type: object
-        name: t
+        name: text
         label: General Text
         description: The text displayed in different buttons/elements throughout the template
         fields:
