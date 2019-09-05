@@ -43,7 +43,6 @@ models:
           - type: string
             name: name
             label: Author Name
-            required: true
           - type: string
             name: twitter
             label: Twitter Handle
