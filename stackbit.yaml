@@ -2,7 +2,7 @@ stackbitVersion: ~0.2.34
 ssgName: jekyll
 staticDir: "example"
 uploadDir: assets/images
-buildCommand: "cd example && gem install bundler && bundle install && bundle exec jekyll build"
+buildCommand: "cd example && gem install bundler && bundle install && bundle exec jekyll build && cd .."
 publishDir: "example/_site"
 dataDir: "example/_data"
 pagesDir: "example"
@@ -704,7 +704,7 @@ models:
         const: "/404.html"
   post:
     type: page
-    label: Post
+    label: Posts
     folder: "_posts"
     layout: post
     fields:
@@ -747,7 +747,7 @@ models:
         label: Date Last Modified
   posts:
     type: page
-    label: Posts
+    label: Posts List Page
     description: The posts page
     singleInstance: true
     file: "posts.md"
