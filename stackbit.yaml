@@ -1,10 +1,10 @@
 stackbitVersion: ~0.2.34
-ssgName: jekyll
+ssgName: custom
 staticDir: "example"
 uploadDir: assets/images
 buildCommand: "cd example && gem install bundler && bundle install && bundle exec jekyll build && cd .."
 publishDir: "example/_site"
-dataDir: "example/_data"
+dataDir: ""
 pagesDir: "example"
 pageLayoutKey: layout
 metadata:
@@ -17,13 +17,53 @@ excludePages:
   - .github
 models:
   config:
-    type: config
+    type: data
+    file: _config.yml
     label: Config
     fields:
       - type: string
         name: title
         label: Site Title
         required: true
+      - type: string
+        name: lang
+        label: Language
+      - type: string
+        name: url
+      - type: string
+        name: theme
+      - type: object
+        name: feed
+        label: Feed
+        fields:
+          - type: string
+            name: path
+      - type: list
+        name: exclude
+      - type: list
+        name: defaults
+        label: Defaults
+        items:
+          type: object
+          fields: 
+            - type: object
+              name: scope
+              fields:
+                - type: string
+                  name: path
+                - type: string
+                  name: type
+            - type: object
+              name: values
+              fields:
+                - type: string
+                  name: layout
+                - type: boolean
+                  name: read_time
+      - type: string
+        name: markdown
+      - type: list
+        name: plugins
       - type: string
         name: email
         label: Email
@@ -75,7 +115,7 @@ models:
         name: algolia
         label: Algolia
         description: Use your algolia Information
-        fields: 
+        fields:
           - type: string
             name: application_id
             label: Application Id
@@ -118,7 +158,7 @@ models:
   cv:
     type: data
     label: Curriculum Vitæ data
-    file: cv.json
+    file: example/_data/cv.json
     fields:
       - type: object
         name: basics
@@ -400,7 +440,7 @@ models:
     type: data
     label: Theme Data
     description: General data for the theme
-    file: theme.yml
+    file: example/_data/theme.yml
     fields:
       - type: enum
         name: skin
