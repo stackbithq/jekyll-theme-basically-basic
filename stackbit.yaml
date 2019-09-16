@@ -1,6 +1,6 @@
 stackbitVersion: ~0.2.34
 ssgName: custom
-staticDir: "example"
+staticDir: example
 uploadDir: assets/images
 buildCommand: "cd example && gem install bundler && bundle install && bundle exec jekyll build && cd .."
 publishDir: "example/_site"
@@ -18,7 +18,7 @@ excludePages:
 models:
   config:
     type: data
-    file: _config.yml
+    file: example/_config.yml
     label: Config
     fields:
       - type: string
@@ -38,6 +38,11 @@ models:
         fields:
           - type: string
             name: path
+      - type: object
+        name: liquid
+        fields: 
+          - type: string
+            name: error_mode
       - type: list
         name: exclude
       - type: list
